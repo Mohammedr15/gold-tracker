@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>مستشار الذهب السعودي</title>
+    <title>إهداء خاص: رادار الذهب لكِ يا كروكة!</title>
     <style>
-        /* إعدادات الخلفية والألوان لراحة العين */
         body { 
             background-color: #0d1117; 
             color: #e6edf3; 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             margin: 0; 
             padding: 0;
+            overflow-x: hidden; /* لمنع ظهور شريط التمرير الأفقي بسبب الرسوم المتحركة */
+            position: relative; /* للسماح بتموضع القلوب المتحركة */
         }
         .app-bar { 
             background-color: #161b22; 
@@ -20,6 +21,33 @@
             border-bottom: 2px solid #d29922;
         }
         h1 { font-size: 1.2rem; color: #d29922; margin: 0; }
+        .romantic-message {
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(45deg, #ff6b6b, #ffe66d); /* تدرج لوني دافئ */
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            margin: 10px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            animation: pulse 1.5s infinite alternate; /* تأثير نبض خفيف */
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.02); }
+        }
+        .heart-emoji {
+            font-size: 2.5rem;
+            animation: bounce 1s infinite alternate; /* تأثير ارتداد للقلوب */
+            display: inline-block;
+            margin: 0 5px;
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-5px); }
+        }
+
         .section-label { 
             padding: 10px 15px; 
             font-size: 0.9rem; 
@@ -34,12 +62,34 @@
             background: #0d1117;
         }
         iframe { border: none; display: block; }
+
+        /* تأثير القلوب المتساقطة */
+        .falling-heart {
+            position: absolute;
+            color: #ff6b6b; /* لون القلب */
+            font-size: 20px;
+            pointer-events: none; /* لتجاهل النقر على القلوب */
+            animation: fall linear forwards;
+            opacity: 0;
+            z-index: 9999; /* ليكون فوق كل شيء */
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) scale(0.5); opacity: 0.8; }
+            100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
+        }
     </style>
 </head>
 <body>
 
     <div class="app-bar">
         <h1>🏆 رادار الذهب: السعودية والعالم</h1>
+    </div>
+
+    <div class="romantic-message">
+        أحبكِ يا كروكة! 
+        <span class="heart-emoji">❤️</span> 
+        <span class="heart-emoji">💖</span>
+        <br> كل لحظة وكل نبضة قلب.
     </div>
 
     <div class="section-label">● بث حي للأسعار (ريال/دولار)</div>
@@ -56,6 +106,29 @@
     <div class="widget-container">
         <iframe src="https://s.tradingview.com/embed-widget/technical-analysis/?locale=ar&theme=dark&symbol=OANDA%3AXAUUSD&interval=1m" width="100%" height="400" frameborder="0"></iframe>
     </div>
+
+    <script>
+        // كود JavaScript لإضافة قلوب متساقطة عشوائياً
+        function createFallingHeart() {
+            const heart = document.createElement('span');
+            heart.classList.add('falling-heart');
+            heart.innerHTML = '💖'; // رمز القلب
+
+            heart.style.left = Math.random() * 100 + 'vw'; // موقع عشوائي أفقي
+            heart.style.animationDuration = (Math.random() * 3 + 5) + 's'; // سرعة سقوط عشوائية
+            heart.style.animationDelay = (Math.random() * 2) + 's'; // تأخير عشوائي
+
+            document.body.appendChild(heart);
+
+            // إزالة القلب بعد انتهاء الرسوم المتحركة
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+            });
+        }
+
+        // إنشاء قلوب جديدة كل فترة
+        setInterval(createFallingHeart, 800); // قلب كل 0.8 ثانية
+    </script>
 
 </body>
 </html>
