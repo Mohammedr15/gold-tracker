@@ -3,66 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محلل الذهب - السوق السعودي</title>
+    <title>مؤشر الذهب السعودي</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0b0e11; color: white; margin: 0; padding: 20px; }
-        .container { max-width: 1200px; margin: auto; }
-        h1 { text-align: center; color: #f0b90b; margin-bottom: 30px; }
-        .grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
-        .card { background: #161a1e; padding: 15px; border-radius: 12px; border: 1px solid #2b3139; }
-        .header-info { text-align: center; margin-bottom: 20px; color: #848e9c; }
-        @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+        body { font-family: 'Cairo', sans-serif; background-color: #0e1217; color: #ffffff; margin: 0; padding: 10px; }
+        .container { max-width: 1100px; margin: auto; }
+        .header { text-align: center; padding: 20px; color: #ffca28; }
+        .card { background: #1c2128; border-radius: 12px; padding: 15px; margin-bottom: 20px; border: 1px solid #30363d; }
+        h3 { margin-top: 0; font-size: 18px; color: #adb5bd; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="container">
-    <h1>🇸🇦 رادار الذهب - مباشر حسب سوق السعودية</h1>
-    <p class="header-info">تحليل مباشر لأسعار الذهب بالريال السعودي (XAU/SAR)</p>
-    
+    <div class="header">
+        <h1>🇸🇦 رادار الذهب - السعودية</h1>
+        <p>مباشر من Investing & TradingView</p>
+    </div>
+
+    <div class="card" style="height: 60px; padding: 5px;">
+        <iframe src="https://s.tradingview.com/embed-widget/ticker-tape/?locale=ar#%7B%22symbols%22%3A%5B%7B%22proName%22%3A%22FX_IDC%3AXAUSAR%22%2C%22title%22%3A%22%D8%A7%D9%84%D8%B0%D9%87%D8%A8%2F%D8%B1%D9%8A%D8%A7%D9%84%22%7D%2C%7B%22proName%22%3A%22OANDA%3AXAUUSD%22%2C%22title%22%3A%22%D8%A7%D9%84%D8%B0%D9%87%D8%A8%2F%D8%AF%D9%88%D9%84%D8%A7%D8%B1%22%7D%5D%2C%22colorTheme%22%3A%22dark%22%7D" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+
     <div class="grid">
         <div class="card">
-            <h3>📈 مخطط الذهب بالريال السعودي (مباشر)</h3>
-            <div id="saudi_gold_chart" style="height: 500px;"></div>
+            <h3>📈 حركة الذهب (ريال سعودي)</h3>
+            <div id="chart_div" style="height: 400px;"></div>
         </div>
 
         <div class="card">
-            <h3>⚖️ قرار التداول (حسب Investing)</h3>
+            <h3>⚖️ تحليل القرار (Investing)</h3>
             <div class="tradingview-widget-container">
-                <div class="tradingview-widget-container__widget"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
                 {
                     "interval": "1h",
                     "width": "100%",
                     "isTransparent": true,
-                    "height": "450",
-                    "symbol": "FX_IDC:XAUSAR",
+                    "height": "400",
+                    "symbol": "OANDA:XAUUSD",
                     "showIntervalTabs": true,
                     "locale": "ar",
                     "colorTheme": "dark"
                 }
                 </script>
+                <p style="font-size: 12px; text-align: center; color: #666;">*التحليل مبني على السعر العالمي للذهب</p>
             </div>
-        </div>
-    </div>
-
-    <div class="card" style="margin-top: 20px;">
-        <h3>📰 آخر أخبار الذهب والاقتصاد السعودي</h3>
-        <div class="tradingview-widget-container">
-            <div class="tradingview-widget-container__widget"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-            {
-                "feedMode": "market",
-                "market": "crypto", 
-                "symbol": "FX_IDC:XAUSAR",
-                "colorTheme": "dark",
-                "isTransparent": true,
-                "displayMode": "regular",
-                "width": "100%",
-                "height": "450",
-                "locale": "ar"
-            }
-            </script>
         </div>
     </div>
 </div>
@@ -70,20 +57,18 @@
 <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 <script type="text/javascript">
   new TradingView.widget({
-  "width": "100%",
-  "height": 500,
-  "symbol": "FX_IDC:XAUSAR",
-  "interval": "D",
-  "timezone": "Asia/Riyadh",
-  "theme": "dark",
-  "style": "1",
-  "locale": "ar",
-  "toolbar_bg": "#f1f3f6",
-  "enable_publishing": false,
-  "hide_side_toolbar": false,
-  "allow_symbol_change": true,
-  "container_id": "saudi_gold_chart"
-});
+    "width": "100%",
+    "height": 400,
+    "symbol": "FX_IDC:XAUSAR",
+    "interval": "D",
+    "timezone": "Asia/Riyadh",
+    "theme": "dark",
+    "style": "1",
+    "locale": "ar",
+    "toolbar_bg": "#f1f3f6",
+    "enable_publishing": false,
+    "container_id": "chart_div"
+  });
 </script>
 
 </body>
