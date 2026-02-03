@@ -1,63 +1,153 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>مؤشر الذهب السعودي</title>
-    <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #0e1217; color: #ffffff; margin: 0; padding: 10px; }
-        .container { max-width: 1100px; margin: auto; }
-        .header { text-align: center; padding: 20px; color: #ffca28; }
-        .card { background: #1c2128; border-radius: 12px; padding: 15px; margin-bottom: 20px; border: 1px solid #30363d; }
-        h3 { margin-top: 0; font-size: 18px; color: #adb5bd; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
-    </style>
+
+    <!-- Google Font (Arabic) -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root{
+            --bg: #0e1217;
+            --card: #1c2128;
+            --muted: #adb5bd;
+            --accent: #ffca28;
+            --border: #30363d;
+        }
+        html,body{ height:100%; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg);
+            color: #fff;
+            margin:0;
+            padding:12px;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+        }
+        .container { max-width:1100px; margin: 0 auto; }
+        .header { text-align:center; padding: 14px 6px 22px; color: var(--accent); }
+        .header h1 { margin:0; font-size:26px; }
+        .header p { margin:6px 0 0; color:var(--muted); font-size:14px; }
+
+        .card {
+            background: var(--card);
+            border-radius:12px;
+            padding:14px;
+            margin-bottom:18px;
+            border: 1px solid var(--border);
+            box-sizing: border-box;
+        }
+        .grid { display:grid; grid-template-columns: 1fr 420px; gap:16px; align-items:start; }
+        @media (max-width: 980px){ .grid { grid-template-columns: 1fr; } }
+
+        h3 { margin:0 0 10px 0; font-size:16px; color:var(--muted); display:flex; align-items:center; gap:8px; }
+        #chart_div { height: 520px; min-height:360px; }
+        .small-note { font-size:12px; color:#9aa3ad; text-align:center; margin-top:8px; }
+
+        /* Make embedded iframes and widgets responsive */
+        .embed-iframe, .tradingview-widget-container { width:100%; height:100%; }
+        .ticker-wrap { height:56px; overflow:hidden; }
+
+        /* Footer / credits */
+        .credits { text-align:center; color:#6b7280; font-size:12px; margin-top:12px; }
+    </style>
 </head>
 <body>
-
-<div class="container">
-    <div class="header">
-        <h1>🇸🇦 رادار الذهب - السعودية</h1>
-        <p>مباشر من Investing & TradingView</p>
-    </div>
-
-    <div class="card" style="height: 60px; padding: 5px;">
-        <iframe src="https://s.tradingview.com/embed-widget/ticker-tape/?locale=ar#%7B%22symbols%22%3A%5B%7B%22proName%22%3A%22FX_IDC%3AXAUSAR%22%2C%22title%22%3A%22%D8%A7%D9%84%D8%B0%D9%87%D8%A8%2F%D8%B1%D9%8A%D8%A7%D9%84%22%7D%2C%7B%22proName%22%3A%22OANDA%3AXAUUSD%22%2C%22title%22%3A%22%D8%A7%D9%84%D8%B0%D9%87%D8%A8%2F%D8%AF%D9%88%D9%84%D8%A7%D8%B1%22%7D%5D%2C%22colorTheme%22%3A%22dark%22%7D" width="100%" height="100%" frameborder="0"></iframe>
-    </div>
-
-    <div class="grid">
-        <div class="card">
-            <h3>📈 حركة الذهب (ريال سعودي)</h3>
-            <div id="chart_div" style="height: 400px;"></div>
+    <div class="container">
+        <div class="header">
+            <h1>🇸🇦 رادار الذهب - السعودية</h1>
+            <p>مباشر — سعر الذهب بالريال السعودي (مباشر من TradingView)</p>
         </div>
 
-        <div class="card">
-            <h3>⚖️ تحليل القرار (Investing)</h3>
-            <div class="tradingview-widget-container">
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
-                {
-                    "interval": "1h",
-                    "width": "100%",
-                    "isTransparent": true,
-                    "height": "400",
-                    "symbol": "OANDA:XAUUSD",
-                    "showIntervalTabs": true,
-                    "locale": "ar",
-                    "colorTheme": "dark"
-                }
-                </script>
-                <p style="font-size: 12px; text-align: center; color: #666;">*التحليل مبني على السعر العالمي للذهب</p>
+        <!-- Ticker tape -->
+        <div class="card ticker-wrap" style="padding:6px 10px;">
+            <iframe class="embed-iframe"
+                src="https://s.tradingview.com/embed-widget/ticker-tape/?locale=ar#%7B%22symbols%22%3A%5B%7B%22proName%22%3A%22FX_IDC%3AXAUSAR%22%2C%22title%22%3A%22%D8%A7%D9%84%D8%B0%D9%87%D8%A8%20%2F%20%D8%B1%D9%8A%D8%A7%D9%84%20%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%22%7D%5D%2C%22displayMode%22%3A%22adaptive%22%2C%22colorTheme%22%3A%22dark%22%2C%22isTransparent%22%3Atrue%7D"
+                style="border:0; width:100%; height:56px;" frameborder="0" scrolling="no" allowtransparency="true">
+            </iframe>
+        </div>
+
+        <div class="grid">
+            <!-- Main interactive chart -->
+            <div class="card">
+                <h3>📈 حركة الذهب (الريال السعودي)</h3>
+                <div id="chart_div"></div>
+                <div class="small-note">سعر مرئي مباشر — اختر الإطار الزمني من شريط الأدوات داخل الرسم</div>
+            </div>
+
+            <!-- Right column: technical analysis + notes -->
+            <div>
+                <div class="card" style="margin-bottom:16px; height:420px;">
+                    <h3>⚖️ تحليل فني (TradingView)</h3>
+                    <div class="tradingview-widget-container" style="height:360px;">
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+                        {
+                          "interval": "60",
+                          "width": "100%",
+                          "isTransparent": true,
+                          "height": "360",
+                          "symbol": "FX_IDC:XAUSAR",
+                          "showIntervalTabs": true,
+                          "locale": "ar",
+                          "colorTheme": "dark"
+                        }
+                        </script>
+                    </div>
+                    <p class="small-note">ملاحظة: هذا التحليل مبني على بيانات السعر (المرئي هنا بالريال السعودي).</p>
+                </div>
+
+                <div class="card">
+                    <h3>ℹ️ ملاحظات مهمة</h3>
+                    <ul style="color:#cbd5e1; padding-left:18px; margin:6px 0 0 0; line-height:1.6;">
+                        <li>البيانات مقدمة عبر TradingView — تتطلب اتصال إنترنت مستقر.</li>
+                        <li>الرمز المستخدم: <code>FX_IDC:XAUSAR</code> (الذهب مقابل الريال السعودي).</li>
+                        <li>الأسعار قد تتأخر قليلاً حسب مزود البيانات — للاستخدام المعلوماتي فقط.</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-<script type="text/javascript">
-  new TradingView.widget({
-    "width": "100%",
-    "height": 400,
-    "symbol": "FX_IDC:XAUSAR",
-    "interval
+        <div class="credits">مصمم بواسطة Mohammedr15 — تحديث تلقائي للرسوم والشارات من TradingView</div>
+    </div>
+
+    <!-- TradingView scripts -->
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+      // Create the interactive advanced chart for FX_IDC:XAUSAR (Gold / SAR)
+      (function() {
+        // Wait for TradingView to be available
+        function initWidget(){
+          try {
+            new TradingView.widget({
+              "container_id": "chart_div",
+              "autosize": true,
+              "symbol": "FX_IDC:XAUSAR",
+              "interval": "60",
+              "timezone": "Etc/UTC",
+              "theme": "dark",
+              "style": "1",
+              "locale": "ar",
+              "toolbar_bg": "#1c2128",
+              "hide_side_toolbar": false,
+              "enable_publishing": false,
+              "allow_symbol_change": true,
+              "studies": [
+                "MASimple@tv-basicstudies",
+                "RSI@tv-basicstudies"
+              ],
+              "disabled_features": [
+                "use_localstorage_for_settings"
+              ]
+            });
+          } catch (e) {
+            // If TradingView not ready yet, retry shortly
+            setTimeout(initWidget, 500);
+          }
+        }
+        initWidget();
+      })();
+    </script>
+</body>
+</html>
