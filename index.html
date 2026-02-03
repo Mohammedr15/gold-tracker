@@ -2,84 +2,32 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رادار الذهب الاحترافي 2026</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>رادار الذهب المباشر</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0e1627; color: white; margin: 0; padding: 20px; }
-        .container { max-width: 1200px; margin: auto; }
-        h1 { text-align: center; color: #ffd700; }
-        .grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
-        .card { background: #1e222d; padding: 15px; border-radius: 10px; border: 1px solid #363c4e; }
-        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        body { background-color: #0b0e11; color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
+        .app-header { background: #161a1e; padding: 15px; text-align: center; border-bottom: 2px solid #f0b90b; position: sticky; top: 0; z-index: 100; }
+        .app-header h1 { color: #f0b90b; margin: 0; font-size: 18px; }
+        .container { padding: 10px; }
+        .card { background: #1e222d; border-radius: 12px; margin-bottom: 15px; overflow: hidden; border: 1px solid #363c4e; }
+        .card-title { padding: 10px 15px; background: #2a2e39; font-size: 14px; color: #ffd700; font-weight: bold; border-bottom: 1px solid #363c4e; }
+        iframe { border: none; width: 100%; display: block; }
+        .live-dot { height: 8px; width: 8px; background-color: #f00; border-radius: 50%; display: inline-block; margin-left: 5px; animation: blink 1s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>🏆 لوحة تحليل الذهب المباشرة</h1>
-    
-    <div class="grid">
-        <div class="card">
-            <h3>الرسم البياني اللحظي (XAU/USD)</h3>
-            <div id="tradingview_chart" style="height: 500px;"></div>
-        </div>
-
-        <div class="card">
-            <h3>مؤشر القرار التلقائي</h3>
-            <div class="tradingview-widget-container">
-                <div class="tradingview-widget-container__widget"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
-                {
-                    "interval": "1h",
-                    "width": "100%",
-                    "isTransparent": true,
-                    "height": "450",
-                    "symbol": "OANDA:XAUUSD",
-                    "showIntervalTabs": true,
-                    "locale": "ar"
-                }
-                </script>
-            </div>
-        </div>
-    </div>
-
-    <div class="card" style="margin-top: 20px;">
-        <h3>آخر أخبار الذهب العالمية</h3>
-        <div class="tradingview-widget-container">
-            <div class="tradingview-widget-container__widget"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-            {
-                "feedMode": "symbol",
-                "symbol": "OANDA:XAUUSD",
-                "colorTheme": "dark",
-                "isTransparent": true,
-                "displayMode": "regular",
-                "width": "100%",
-                "height": "400",
-                "locale": "ar"
-            }
-            </script>
-        </div>
-    </div>
+<div class="app-header">
+    <h1><span class="live-dot"></span> رادار الذهب السعودي والعالمي</h1>
 </div>
 
-<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-<script type="text/javascript">
-  new TradingView.widget({
-  "width": "100%",
-  "height": 500,
-  "symbol": "OANDA:XAUUSD",
-  "interval": "D",
-  "timezone": "Etc/UTC",
-  "theme": "dark",
-  "style": "1",
-  "locale": "ar",
-  "toolbar_bg": "#f1f3f6",
-  "enable_publishing": false,
-  "allow_symbol_change": true,
-  "container_id": "tradingview_chart"
-});
-</script>
+<div class="container">
 
-</body>
-</html>
+    <div class="card">
+        <div class="card-title">أسعار البث المباشر (ثانية بثانية)</div>
+        <iframe src="
