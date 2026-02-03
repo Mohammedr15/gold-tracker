@@ -3,33 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مؤشر الذهب السعودي</title>
+    <title>رادار الذهب السعودي</title>
     <style>
-        body { background-color: #0b0e11; color: white; font-family: sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
+        body { background-color: #0b0e11; color: white; font-family: sans-serif; margin: 0; padding: 0; }
+        .container { padding: 10px; max-width: 1000px; margin: auto; }
         .header { background: #161a1e; padding: 15px; text-align: center; border-bottom: 2px solid #f0b90b; }
-        .header h1 { color: #f0b90b; margin: 0; font-size: 20px; }
-        .widget-box { padding: 10px; margin-bottom: 10px; }
-        iframe { border: none; width: 100%; border-radius: 8px; }
+        h1 { color: #f0b90b; font-size: 1.5rem; margin: 0; }
+        .card { background: #1e222d; border-radius: 8px; margin-top: 15px; overflow: hidden; border: 1px solid #363c4e; }
+        .label { padding: 10px; background: #2a2e39; font-weight: bold; font-size: 14px; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>🇸🇦 رادار الذهب السعودي (مباشر)</h1>
+    <h1>🇸🇦 رادار الذهب - تحديث مباشر</h1>
 </div>
 
-<div class="widget-box">
-    <iframe src="https://s.tradingview.com/embed-widget/ticker-tape/?locale=ar&theme=dark&symbols=FX_IDC%3AXAUSAR%2COANDA%3AXAUUSD" height="72"></iframe>
-</div>
+<div class="container">
+    <div class="card">
+        <div class="label">أسعار الذهب المباشرة (ريال/دولار)</div>
+        <iframe src="https://s.tradingview.com/embed-widget/ticker-tape/?locale=ar&theme=dark&symbols=FX_IDC%3AXAUSAR%2COANDA%3AXAUUSD" width="100%" height="72" frameborder="0"></iframe>
+    </div>
 
-<div class="widget-box">
-    <h3 style="padding-right: 15px;">📈 مخطط الذهب/ريال</h3>
-    <iframe src="https://s.tradingview.com/widgetembed/?symbol=FX_IDC%3AXAUSAR&interval=D&theme=dark&style=1&locale=ar" height="450"></iframe>
-</div>
+    <div class="card">
+        <div class="label">📈 مخطط حركة الذهب (تحديث لحظي)</div>
+        <iframe src="https://s.tradingview.com/widgetembed/?symbol=OANDA:XAUUSD&interval=D&theme=dark&style=1&locale=ar" width="100%" height="450" frameborder="0"></iframe>
+    </div>
 
-<div class="widget-box">
-    <h3 style="padding-right: 15px;">⚖️ إشارة البيع والشراء</h3>
-    <iframe src="https://s.tradingview.com/embed-widget/technical-analysis/?locale=ar&theme=dark&symbol=OANDA%3AXAUUSD&interval=1h" height="400"></iframe>
+    <div class="card">
+        <div class="label">⚖️ تحليل Investing (إشارة البيع والشراء)</div>
+        <iframe src="https://s.tradingview.com/embed-widget/technical-analysis/?locale=ar&theme=dark&symbol=OANDA%3AXAUUSD&interval=1h" width="100%" height="400" frameborder="0"></iframe>
+    </div>
 </div>
 
 </body>
