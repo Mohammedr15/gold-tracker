@@ -3,31 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>رادار الذهب المباشر</title>
-    
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    
+    <title>تطبيق رادار الذهب</title>
     <style>
-        body { background-color: #0b0e11; color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
-        .app-header { background: #161a1e; padding: 15px; text-align: center; border-bottom: 2px solid #f0b90b; position: sticky; top: 0; z-index: 100; }
-        .app-header h1 { color: #f0b90b; margin: 0; font-size: 18px; }
+        body { background-color: #0b0e11; color: white; font-family: 'Arial', sans-serif; margin: 0; padding: 0; }
+        .header { background: #161a1e; padding: 15px; text-align: center; border-bottom: 2px solid #f0b90b; }
+        .header h1 { color: #f0b90b; margin: 0; font-size: 1.2rem; }
         .container { padding: 10px; }
-        .card { background: #1e222d; border-radius: 12px; margin-bottom: 15px; overflow: hidden; border: 1px solid #363c4e; }
-        .card-title { padding: 10px 15px; background: #2a2e39; font-size: 14px; color: #ffd700; font-weight: bold; border-bottom: 1px solid #363c4e; }
-        iframe { border: none; width: 100%; display: block; }
-        .live-dot { height: 8px; width: 8px; background-color: #f00; border-radius: 50%; display: inline-block; margin-left: 5px; animation: blink 1s infinite; }
-        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .widget-card { background: #1e222d; border-radius: 12px; margin-bottom: 15px; overflow: hidden; border: 1px solid #363c4e; height: auto; }
+        .label { padding: 8px 15px; background: #2a2e39; font-size: 13px; color: #ffd700; border-bottom: 1px solid #363c4e; }
+        
+        /* ضبط أحجام الويدجت لتعمل على الجوال */
+        .price-strip { height: 72px; }
+        .main-chart { height: 400px; }
+        .tech-analysis { height: 450px; }
     </style>
 </head>
 <body>
 
-<div class="app-header">
-    <h1><span class="live-dot"></span> رادار الذهب السعودي والعالمي</h1>
+<div class="header">
+    <h1>🏆 رادار الذهب (مباشر)</h1>
 </div>
 
 <div class="container">
 
-    <div class="card">
-        <div class="card-title">أسعار البث المباشر (ثانية بثانية)</div>
-        <iframe src="
+    <div class="widget-card price-strip">
+        <iframe src="https://s.tradingview.com/embed-widget/ticker-tape/?locale=ar&theme=dark&symbols=FX_IDC%3AXAUSAR%7C1D%2COANDA%3AXAUUSD%7C1D" width="100%" height="72" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+    </div>
+
+    <div class="widget-card">
+        <div class="label">📈 مخطط الذهب لحظة بلحظة</div>
+        <div class="main-chart">
+            <iframe src="https://s.tradingview.com/widgetembed/?symbol=OANDA:XAUUSD&interval=1&theme=dark&style=1&locale=ar&timezone=Asia/Riyadh" width="100%" height="400" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+        </div>
+    </div>
+
+    <div class="widget-card">
+        <div class="label">⚖️ إشارة البيع والشراء (Investing)</div>
+        <div class="tech-analysis">
+            <iframe src="https://s.tradingview.com/embed-widget/technical-analysis/?locale=ar&theme=dark&symbol=OANDA%3AXAUUSD&interval=1m&width=100%25&height=450" width="100%" height="450" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
