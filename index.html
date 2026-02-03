@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>رادار الذهب الاحترافي 2026 — لوحة تحليل الذهب المباشرة</title>
+  <meta name="description" content="لوحة تحليل ذهب مباشرة (XAU/USD) مع مؤشرات فنية وأخبار محدثة. لوحة مظلمة، RTL، وتحسينات أداء وتحميل كسول للرسوم البيانية." />
+  <meta property="og:title" content="رادار الذهب الاحترافي 2026" />
+  <meta property="og:description" content="لوحة تحليل ذهب مباشرة (XAU/USD) مع مؤشرات فنية وأخبار محدثة." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://s3.tradingview.com" crossorigin />
+  <style>
+    :root {
+      --bg: #0e1627;
+      --card: #1e222d;
+      --border: #363c4e;
+      --accent: #ffd700;
+      --text: #ffffff;
+      --muted: #aab2c6;
+    }
+    html,body { height:100%; margin:0; background:var(--bg); color:var(--text); font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
+    .container { max-width:1200px; margin:20px auto; padding:0 16px; }
+    h1 { text-align:center; color:var(--accent); margin: 8px 0 20px; font-size:1.6rem; }
+    .grid { display:grid; grid-template-columns: 2fr 1fr; gap:20px; align-items:start; }
+    .card { background:var(--card); padding:15px; border-radius:10px; border:1px solid var(--border); box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
+    .card h3 { margin:0 0 12px 0; color:var(--accent); font-size:1.05rem; }
+    #tradingview_chart { height:500px; width:100%; min-height:320px; background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius:6px; }
+    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:var(--muted); font-size:0.95rem; }
+    .sr-only { position: absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .placeholder { display:flex; align-items:center; justify-content:center; height:100%; color:var(--muted); }
+  </style>
+
+  <!--
+    Recommended CSP (set this as an HTTP response header on your server).
+    If you cannot set headers on the server, you can use a meta tag but server header is stronger.
+
+    Example header (adjust exactly for your deployment):
+    Content-Security-Policy:
+      default-src 'self';
+      script-src 'self' https://s3.tradingview.com 'unsafe-inline' 'unsafe-eval';
+      connect-src 'self' https://s3.tradingview.com;
+      frame-src https://s.tradingview.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src https://fonts.gstatic.com data:;
+      img-src 'self' data: https://s3.tradingview.com;
+
+    Note: TradingView's embedding currently requires allowing their scripts and sometimes inline JSON.
+    Trade-off: tighter CSP reduces risk, but you must allow the TradingView hosts for the widgets to work.
+  -->
+  <meta name="color-scheme" content="dark" />
+</head>
+<body>
+  <a class="sr-only" href="#main">تخطي إلى المحتوى الرئيسي</a>
+
+  <main id="main" class="container" role="main" aria-labelledby="page-title">
+    <h1 id="page-title">🏆 لوحة تحليل الذهب المباشرة</h1>
+
+    <div class="grid" role="region" aria-label="لوحة البيانات">
+      <section class="card" aria-labelledby="chart-title">
+        <h3 id="chart-title">الرسم البياني اللحظي (XAU/USD)</h3>
+        <div id="tradingview_chart" aria-live="polite" aria-label="الرسم البياني اللحظي للذهب">
+          <div class="placeholder" id="chart-placeholder">تحميل الرسم البياني عند اقتراب العرض...</div>
+        </div>
+      </section>
+
+      <aside class="card" aria-labelledby="auto-indicator-title" role="complementary">
+        <h3 id="auto-indicator-title">مؤشر القرار التلقائي</h3>
+        <div id="technical-analysis-widget" style="min-height:220px;">
+          <div class="placeholder">تحميل مؤشر التداول عند الطلب...</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="card" style="margin-top:20px;" role="region" aria-labelledby="news-title">
+      <h3 id="news-title">آخر أخبار الذهب العالمية</h3>
+      <div id="timeline-widget" style="min-height:240px;">
+        <div class="placeholder">تحميل الأخبار عند الطلب...</div>
+      </div>
+    </div>
+  </main>
+
+  <noscript>
+    <div style="max-width:1200px;margin:20px auto;padding:12px;background:#2a313d;color:#fff;border-radius:8px;">
+      <strong>تنبيه:</strong> هذه الصفحة تعتمد على جافاسكربت لعرض الرسوم البيانية والمحتوى الحي. يرجى تمكين جافاسكربت لعرض جميع المزايا.
+    </div>
+  </noscript>
+
+  <script>
+    // Lazy-load TradingView scripts and widgets when the main chart enters the viewport.
+    (function () {
+      const chartEl = document.getElementById('tradingview_chart');
+      let loaded = false;
+
+      function createScriptWithJSON(src, jsonConfig, parent) {
+        const s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.src = src;
+        s.async = true;
+        // Many TradingView embed scripts read their JSON from the text content of the script tag.
+        s.text = JSON.stringify(jsonConfig);
+        parent.appendChild(s);
+      }
+
+      function createInlineTradingViewWidget() {
+        // Replace placeholders with actual widgets.
+        // 1) Main chart widget (uses global TradingView.widget constructor)
+        if (window.TradingView && typeof window.TradingView.widget === 'function') {
+          // Remove placeholder
+          const ph = document.getElementById('chart-placeholder');
+          if (ph) ph.remove();
+
+          new TradingView.widget({
+            "width": "100%",
+            "height": 500,
+            "symbol": "OANDA:XAUUSD",
+            "interval": "D",
+            "timezone": "Etc/UTC",
+            "theme": "dark",
+            "style": "1",
+            "locale": "ar",
+            "toolbar_bg": "#0e1627",
+            "enable_publishing": false,
+            "allow_symbol_change": true,
+            "container_id": "tradingview_chart"
+          });
+        }
+
+        // 2) Technical analysis widget (external embedding)
+        const taContainer = document.getElementById('technical-analysis-widget');
+        if (taContainer) {
+          taContainer.innerHTML = '';
+          createScriptWithJSON("https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js", {
+            "interval": "1h",
+            "width": "100%",
+            "isTransparent": true,
+            "height": "450",
+            "symbol": "OANDA:XAUUSD",
+            "showIntervalTabs": true,
+            "locale": "ar"
+          }, taContainer);
+        }
+
+        // 3) Timeline/news widget
+        const tlContainer = document.getElementById('timeline-widget');
+        if (tlContainer) {
+          tlContainer.innerHTML = '';
+          createScriptWithJSON("https://s3.tradingview.com/external-embedding/embed-widget-timeline.js", {
+            "feedMode": "symbol",
+            "symbol": "OANDA:XAUUSD",
+            "colorTheme": "dark",
+            "isTransparent": true,
+            "displayMode": "regular",
+            "width": "100%",
+            "height": "400",
+            "locale": "ar"
+          }, tlContainer);
+        }
+      }
+
+      function loadTradingViewAssets() {
+        if (loaded) return;
+        loaded = true;
+
+        // Load tv.js first, then create widgets
+        const script = document.createElement('script');
+        script.src = 'https://s3.tradingview.com/tv.js';
+        script.async = true;
+        script.onload = function () {
+          // small timeout to ensure TradingView global is ready
+          try {
+            createInlineTradingViewWidget();
+          } catch (err) {
+            console.error('TradingView widget creation error:', err);
+          }
+        };
+        script.onerror = function () {
+          console.error('Failed to load TradingView tv.js from s3.tradingview.com');
+        };
+        document.body.appendChild(script);
+      }
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              loadTradingViewAssets();
+              observer.disconnect();
+            }
+          });
+        }, { rootMargin: '300px 0px' }); // pre-load when near viewport
+
+        observer.observe(chartEl);
+      } else {
+        // Fallback: load immediately
+        loadTradingViewAssets();
+      }
+    })();
+  </script>
+</body>
+</html>
