@@ -2,35 +2,58 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مؤشر الذهب السعودي</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>مستشار الذهب السعودي</title>
     <style>
-        body { background-color: #0b0e11; color: white; font-family: sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
-        .header { background: #161a1e; padding: 15px; text-align: center; border-bottom: 2px solid #f0b90b; }
-        .header h1 { color: #f0b90b; margin: 0; font-size: 20px; }
-        .widget-box { padding: 10px; margin-bottom: 10px; }
-        iframe { border: none; width: 100%; border-radius: 8px; }
+        /* إعدادات الخلفية والألوان لراحة العين */
+        body { 
+            background-color: #0d1117; 
+            color: #e6edf3; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            margin: 0; 
+            padding: 0;
+        }
+        .app-bar { 
+            background-color: #161b22; 
+            padding: 20px; 
+            text-align: center; 
+            border-bottom: 2px solid #d29922;
+        }
+        h1 { font-size: 1.2rem; color: #d29922; margin: 0; }
+        .section-label { 
+            padding: 10px 15px; 
+            font-size: 0.9rem; 
+            color: #8b949e; 
+            background: #161b22;
+        }
+        .widget-container { 
+            margin: 10px; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            border: 1px solid #30363d;
+            background: #0d1117;
+        }
+        iframe { border: none; display: block; }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <h1>🇸🇦 رادار الذهب السعودي (مباشر)</h1>
-</div>
+    <div class="app-bar">
+        <h1>🏆 رادار الذهب: السعودية والعالم</h1>
+    </div>
 
-<div class="widget-box">
-    <iframe src="https://s.tradingview.com/embed-widget/ticker-tape/?locale=ar&theme=dark&symbols=FX_IDC%3AXAUSAR%2COANDA%3AXAUUSD" height="72"></iframe>
-</div>
+    <div class="section-label">● بث حي للأسعار (ريال/دولار)</div>
+    <div class="widget-container">
+        <iframe src="https://s.tradingview.com/embed-widget/ticker-tape/?locale=ar&theme=dark&symbols=FX_IDC%3AXAUSAR%2COANDA%3AXAUUSD" width="100%" height="72" frameborder="0"></iframe>
+    </div>
 
-<div class="widget-box">
-    <h3 style="padding-right: 15px;">📈 مخطط الذهب/ريال</h3>
-    <iframe src="https://s.tradingview.com/widgetembed/?symbol=FX_IDC%3AXAUSAR&interval=D&theme=dark&style=1&locale=ar" height="450"></iframe>
-</div>
-
-<div class="widget-box">
-    <h3 style="padding-right: 15px;">⚖️ إشارة البيع والشراء</h3>
-    <iframe src="https://s.tradingview.com/embed-widget/technical-analysis/?locale=ar&theme=dark&symbol=OANDA%3AXAUUSD&interval=1h" height="400"></iframe>
-</div>
+    <div class="section-label">● مخطط الحركة اللحظية</div>
+    <div class="widget-container
+        
+    <div class="section-label">● تحليل الإشارة (بيع / شراء)</div>
+    <div class="widget-container">
+        <iframe src="https://s.tradingview.com/embed-widget/technical-analysis/?locale=ar&theme=dark&symbol=OANDA%3AXAUUSD&interval=1m" width="100%" height="400" frameborder="0"></iframe>
+    </div>
 
 </body>
 </html>
